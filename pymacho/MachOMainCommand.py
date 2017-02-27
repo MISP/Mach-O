@@ -18,8 +18,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 from struct import unpack, pack
-from pymacho.MachOLoadCommand import MachOLoadCommand
-from pymacho.Utils import green
+from .MachOLoadCommand import MachOLoadCommand
+from .Utils import green
 
 
 class MachOMainCommand(MachOLoadCommand):

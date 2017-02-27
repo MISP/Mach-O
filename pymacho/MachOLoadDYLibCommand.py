@@ -19,9 +19,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 from struct import unpack, pack
 from datetime import datetime
-from pymacho.MachOLoadCommand import MachOLoadCommand
-from pymacho.Utils import int32_to_version, green
-from pymacho.Constants import *
+from .MachOLoadCommand import MachOLoadCommand
+from .Utils import int32_to_version, green
+from .Constants import *
 
 
 class MachOLoadDYLibCommand(MachOLoadCommand):

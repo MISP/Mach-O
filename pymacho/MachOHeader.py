@@ -18,7 +18,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 from struct import unpack, pack
-from pymacho.Constants import *
+from .Constants import *
 
 
 class MachOHeader(object):
@@ -44,6 +44,7 @@ class MachOHeader(object):
         """
         assert macho_file.tell() == 0
         self.magic = unpack('<I', macho_file.read(4))[0]
+        print(self.magic)
         assert self.magic in [MH_MAGIC, MH_CIGAM, MH_MAGIC_64, MH_CIGAM_64]
         self.cputype, self.cpusubtype, self.filetype = unpack("<III", macho_file.read(4*3))
         self.ncmds, self.sizeofcmds, self.flags = unpack('<III', macho_file.read(4*3))
@@ -76,6 +77,7 @@ class MachOHeader(object):
         """
         Return the string to display based on its cputype number.
         """
+        print(self.cputype)
         if self.cputype == CPU_TYPE_POWERPC:
             return "ppc"
         elif self.cputype == CPU_TYPE_POWERPC64:

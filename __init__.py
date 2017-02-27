@@ -1,1 +1,1 @@
-from .pymacho import MachO
+from .pymacho.MachO import MachO

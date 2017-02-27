@@ -17,23 +17,24 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
+from io import open
 from struct import unpack
-from pymacho.MachOHeader import MachOHeader
-from pymacho.MachOSegment import MachOSegment
-from pymacho.MachODYLDInfoCommand import MachODYLDInfoCommand
-from pymacho.MachOSymtabCommand import MachOSymtabCommand
-from pymacho.MachODYSymtabCommand import MachODYSymtabCommand
-from pymacho.MachODYLinkerCommand import MachODYLinkerCommand
-from pymacho.MachOUUIDCommand import MachOUUIDCommand
-from pymacho.MachOVersionMinCommand import MachOVersionMinCommand
-from pymacho.MachOThreadCommand import MachOThreadCommand
-from pymacho.MachOMainCommand import MachOMainCommand
-from pymacho.MachOLoadDYLibCommand import MachOLoadDYLibCommand
-from pymacho.MachOLinkeditDataCommand import MachOLinkeditDataCommand
-from pymacho.MachORPathCommand import MachORPathCommand
-from pymacho.MachOSourceVersionCommand import MachOSourceVersionCommand
-from pymacho.MachOEncryptionInfoCommand import MachOEncryptionInfoCommand
-from pymacho.Constants import *
+from .MachOHeader import MachOHeader
+from .MachOSegment import MachOSegment
+from .MachODYLDInfoCommand import MachODYLDInfoCommand
+from .MachOSymtabCommand import MachOSymtabCommand
+from .MachODYSymtabCommand import MachODYSymtabCommand
+from .MachODYLinkerCommand import MachODYLinkerCommand
+from .MachOUUIDCommand import MachOUUIDCommand
+from .MachOVersionMinCommand import MachOVersionMinCommand
+from .MachOThreadCommand import MachOThreadCommand
+from .MachOMainCommand import MachOMainCommand
+from .MachOLoadDYLibCommand import MachOLoadDYLibCommand
+from .MachOLinkeditDataCommand import MachOLinkeditDataCommand
+from .MachORPathCommand import MachORPathCommand
+from .MachOSourceVersionCommand import MachOSourceVersionCommand
+from .MachOEncryptionInfoCommand import MachOEncryptionInfoCommand
+from .Constants import *
 
 
 class MachO(object):

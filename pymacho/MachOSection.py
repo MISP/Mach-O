@@ -18,9 +18,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 from struct import unpack, pack
-from pymacho.Constants import *
-from pymacho.MachORelocationInfo import MachORelocationInfo
-from pymacho.Utils import green
+from .Constants import *
+from .MachORelocationInfo import MachORelocationInfo
+from .Utils import green
 
 
 class MachOSection(object):

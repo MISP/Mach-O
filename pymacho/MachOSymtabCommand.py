@@ -18,9 +18,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 from struct import unpack, pack
-from pymacho.MachOLoadCommand import MachOLoadCommand
-from pymacho.MachONList import MachONList
-from pymacho.Utils import green
+from .MachOLoadCommand import MachOLoadCommand
+from .MachONList import MachONList
+from .Utils import green
 
 
 class MachOSymtabCommand(MachOLoadCommand):

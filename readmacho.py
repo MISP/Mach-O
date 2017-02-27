@@ -30,28 +30,28 @@ def main():
     parser.add_argument('--load-commands', '-lc', help='display all load commands', action='store_true')
     parser.add_argument('--verbose', '-v', help='display many informations', action='store_true')
     args = parser.parse_args()
-    
+
     m = MachO(args.filename)
 
     if args.headers:
-        print yellow("[*]")+ " Headers :"
-        print green("\t[+]")+" magic : 0x%x %s" % (m.header.magic, "- " + m.header.display_magic() if args.verbose else "")
-        print green("\t[+]")+" cputype : 0x%x %s" % (m.header.cputype, "- " + m.header.display_cputype() if args.verbose else "")
-        print green("\t[+]")+" cpusubtype : 0x%s" % (m.header.cpusubtype)
-        print green("\t[+]")+" filetype : 0x%x %s" % (m.header.filetype, "- " + m.header.display_filetype() if args.verbose else "")
-        print green("\t[+]")+" ncmds : %d" % (m.header.ncmds)
-        print green("\t[+]")+" sizeofcmds : %d byte%s" % (m.header.sizeofcmds, "s" if m.header.sizeofcmds > 1 else "")
-        print green("\t[+]")+" flags : 0x%x %s" % (m.header.flags, "- " + ", ".join(m.header.display_flags()) if args.verbose else "")
+        print(yellow("[*]")+ " Headers :")
+        print(green("\t[+]")+" magic : 0x%x %s" % (m.header.magic, "- " + m.header.display_magic() if args.verbose else ""))
+        print(green("\t[+]")+" cputype : 0x%x %s" % (m.header.cputype, "- " + m.header.display_cputype() if args.verbose else ""))
+        print(green("\t[+]")+" cpusubtype : 0x%s" % (m.header.cpusubtype))
+        print(green("\t[+]")+" filetype : 0x%x %s" % (m.header.filetype, "- " + m.header.display_filetype() if args.verbose else ""))
+        print(green("\t[+]")+" ncmds : %d" % (m.header.ncmds))
+        print(green("\t[+]")+" sizeofcmds : %d byte%s" % (m.header.sizeofcmds, "s" if m.header.sizeofcmds > 1 else ""))
+        print(green("\t[+]")+" flags : 0x%x %s" % (m.header.flags, "- " + ", ".join(m.header.display_flags()) if args.verbose else ""))
         if m.header.is_64():
-            print green("\t[+]")+" reserved : 0x%x" % (m.header.reserved)
+            print(green("\t[+]")+" reserved : 0x%x" % (m.header.reserved))
 
     if args.segments:
-        print yellow("[*]")+" Segments (%d) :" % len(m.segments)
+        print(yellow("[*]")+" Segments (%d) :" % len(m.segments))
         for segment in m.segments:
             segment.display(before="\t")
 
     if args.load_commands:
-        print yellow("[*]")+" Load Commands (%d) :" % len(m.commands)
+        print(yellow("[*]")+" Load Commands (%d) :" % len(m.commands))
         for lc in m.commands:
             lc.display("\t")
 

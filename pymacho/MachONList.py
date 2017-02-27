@@ -18,7 +18,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 """
 
 from struct import unpack, pack
-from pymacho.Utils import green
+from .Utils import green
 
 
 class MachONList(object):
