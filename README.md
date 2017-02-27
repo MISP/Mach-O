@@ -1,3 +1,13 @@
+=======
+WARNING
+=======
+
+This code has been converted to python 3 using 2to3. It probably contains lots of bugs.
+
+
+
+
+
 __This project is under development__
 
 # Mach-O
