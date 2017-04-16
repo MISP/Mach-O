@@ -36,6 +36,7 @@ class MachOSegment(object):
     nsects = 0
     flags = 0
     sections = None
+    data = None
 
     def __init__(self, macho_file=None, arch=32):
         if arch != 32:
@@ -44,7 +45,7 @@ class MachOSegment(object):
             self.parse(macho_file)
 
     def parse(self, macho_file):
-        self.segname = "".join(char if char != "\x00" else "" for char in unpack("<cccccccccccccccc", macho_file.read(16)))
+        self.segname = b"".join(char if char != "\x00" else "" for char in unpack("<cccccccccccccccc", macho_file.read(16)))
 
         if self.arch == 32:
             self.vmaddr, self.vmsize, self.fileoff, self.filesize = unpack('<IIII', macho_file.read(4*4))
@@ -64,7 +65,7 @@ class MachOSegment(object):
     def write(self, macho_file):
         before = macho_file.tell()
         macho_file.write(pack('<I', 0x1 if self.arch == 32 else 0x19)) # load_command
-        macho_file.write(pack('<I', 0x0)) # load_command size - initialize to 0
+        macho_file.write(pack('<I', 0x0))  # load_command size - initialize to 0
         macho_file.write(pack('<16s', self.segname))
         if self.arch == 32:
             macho_file.write(pack('<IIII', self.vmaddr, self.vmsize, self.fileoff, self.filesize))

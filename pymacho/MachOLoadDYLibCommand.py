@@ -49,7 +49,7 @@ class MachOLoadDYLibCommand(MachOLoadCommand):
         # get string
         strlen = cmdsize - self.name_offset
         extract = "<%s" % ('s'*strlen)
-        self.name = "".join(unpack(extract, macho_file.read(strlen)))
+        self.name = b"".join(unpack(extract, macho_file.read(strlen)))
 
     def write(self, macho_file):
         before = macho_file.tell()
