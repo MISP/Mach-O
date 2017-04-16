@@ -51,7 +51,7 @@ class MachOSymtabCommand(MachOLoadCommand):
         # parse strings
         macho_file.seek(self.stroff)
         chaines = unpack('<'+str(self.strsize)+'s', macho_file.read(self.strsize))[0]
-        for chaine in chaines.split("\x00"):
+        for chaine in chaines.split(b"\x00"):
                 self.strs.append(chaine)
         macho_file.seek(before)
 
@@ -65,7 +65,7 @@ class MachOSymtabCommand(MachOLoadCommand):
         for sym in self.syms:
             sym.write(macho_file)
         macho_file.seek(self.stroff)
-        macho_file.write("\x00".join(self.strs))
+        macho_file.write(b"\x00".join(self.strs))
         macho_file.seek(before+4)
         macho_file.write(pack('<I', after-before))
         macho_file.seek(after)

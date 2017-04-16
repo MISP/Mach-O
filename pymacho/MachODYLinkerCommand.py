@@ -45,7 +45,7 @@ class MachODYLinkerCommand(MachOLoadCommand):
         # get the string
         strlen = (cmdsize - self.offset)
         extract = "<%s" % ('s'*strlen)
-        self.path = "".join(unpack(extract, macho_file.read(strlen)))
+        self.path = b"".join(unpack(extract, macho_file.read(strlen)))
 
     def write(self, macho_file):
         before = macho_file.tell()

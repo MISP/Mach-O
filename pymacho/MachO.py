@@ -101,4 +101,4 @@ class MachO(object):
             elif cmd == LC_ENCRYPTION_INFO:
                 self.commands.append(MachOEncryptionInfoCommand(macho_file, cmd))
             else:
-                raise Exception("unknow load command : 0x%x - please report it!" % cmd)
+                raise Exception("unknown load command : 0x%x - please report it!" % cmd)

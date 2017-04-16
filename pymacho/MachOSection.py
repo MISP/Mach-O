@@ -45,8 +45,8 @@ class MachOSection(object):
             self.parse(macho_file)
 
     def parse(self, macho_file):
-        self.sectname = "".join(char if char != "\x00" else "" for char in unpack("<cccccccccccccccc", macho_file.read(16)))
-        self.segname = "".join(char if char != "\x00" else "" for char in unpack("<cccccccccccccccc", macho_file.read(16)))
+        self.sectname = b"".join(char if char != "\x00" else "" for char in unpack("<cccccccccccccccc", macho_file.read(16)))
+        self.segname = b"".join(char if char != "\x00" else "" for char in unpack("<cccccccccccccccc", macho_file.read(16)))
 
         if self.arch == 32:
             self.addr, self.size = unpack('<II', macho_file.read(2*4))
